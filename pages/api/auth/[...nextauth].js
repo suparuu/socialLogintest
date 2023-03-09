@@ -1,18 +1,11 @@
-import NextAuth from "next-auth"
-import SpotifyProvider from "next-auth/providers/spotify";
+import NextAuth from 'next-auth'
+import KakaoProvider from 'next-auth/providers/kakao'
 
 export default NextAuth({
-    providers: [
-        SpotifyProvider({
-            clientId: process.env.CLIENT_ID,
-            clientSecret: process.env.CLIENT_SECRET,
-            scope: 'user-read-email user-library-read',
-            callbacks: {
-                async redirect(url, baseUrl){
-                    console.log(baseUrl)
-                    return `${baseUrl}/callback`
-                }
-            }
-        })  
-    ]
+  providers: [
+    KakaoProvider({
+      clientId: process.env.KAKAO_CLIENT_ID,
+      clientSecret: process.env.KAKAO_CLIENT_SECRET,
+    }),
+  ],
 })
